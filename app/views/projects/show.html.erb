@@ -1,14 +1,17 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Title:</strong>
-  <%= @project.title %>
-</p>
-
-<p>
-  <strong>Description:</strong>
-  <%= @project.description %>
-</p>
-
-<%= link_to 'Edit', edit_project_path(@project) %> |
-<%= link_to 'Back', projects_path %>
+<div class="row">
+  <div class="col-md-12 col-lg-8 col-xl-4 bg-white mx-auto">
+    <div class="login-wrap p-4 p-md-5">
+      <div class="d-flex align-items-center justify-content-center m-3">
+      </div>
+      <small>Project name</small>
+      <h2 class="mb-3"><%= @project.title %></h2>
+      <small>Description</small>
+      <p><%= @project.description %></p>
+      <hr>
+      <%= link_to 'Edit', edit_project_path(@project), class: "btn btn-primary" %> 
+      <%= link_to 'Back', projects_path, class: "btn btn-primary" %>
+    </div>
+  </div>
+</div>
