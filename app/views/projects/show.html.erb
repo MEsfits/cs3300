@@ -10,7 +10,7 @@
       <small>Description</small>
       <p><%= @project.description %></p>
       <hr>
-      <%= link_to 'Edit', edit_project_path(@project), class: "btn btn-primary" %> 
+      <%= link_to 'Edit', edit_project_path(@project), class: "btn btn-primary" if current_user&.owner? %>
       <%= link_to 'Back', projects_path, class: "btn btn-primary" %>
     </div>
   </div>

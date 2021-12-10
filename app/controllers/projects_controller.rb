@@ -1,5 +1,7 @@
 class ProjectsController < ApplicationController
   before_action :set_project, only: %i[ show edit update destroy ]
+  skip_before_action :authenticate_user!, only: %i[ index show ]
+  before_action :owner_check, only: %i[ new create edit update destroy ]
 
   # GET /projects or /projects.json
   def index
@@ -57,6 +59,11 @@ class ProjectsController < ApplicationController
   end
 
   private
+
+    def owner_check
+      redirect_to projects_path and return unless current_user&.owner?
+    end
+
     # Use callbacks to share common setup or constraints between actions.
     def set_project
       @project = Project.find(params[:id])
